@@ -4,7 +4,9 @@
 
 **[Download Homebox for Windows x64 (portable ZIP)](https://github.com/ayasecastorice-maker/homebox-device-library/releases/download/v0.1.0-windows/Homebox-Windows-x64.zip)**
 
-On Windows 10 22H2 or Windows 11 (64-bit Intel/AMD), **extract the entire ZIP** to a writable local folder and double-click **`Homebox.exe`**. Register on first use. Closing the window stops the server. WebView2 is bundled; no SDK, compiler, Go, or Node.js installation is needed. Use the link above for the app; **Code → Download ZIP** is source code. Sign in with a GitHub account that has access to this private repository.
+**macOS preview:** [Apple silicon](https://github.com/ayasecastorice-maker/homebox-device-library/releases/download/v0.1.0-macos/Homebox-macOS-arm64.zip) | [Intel](https://github.com/ayasecastorice-maker/homebox-device-library/releases/download/v0.1.0-macos/Homebox-macOS-amd64.zip). Targets macOS 13 or later. Not yet tested on Mac hardware or notarized by Apple.
+
+On Windows 10 22H2 or Windows 11 (64-bit Intel/AMD), **extract the entire ZIP** to a writable local folder and double-click **`Homebox.exe`**. Register on first use. Closing the window stops the server. WebView2 is bundled; no SDK, compiler, Go, or Node.js installation is needed. Use the links above for the app; **Code → Download ZIP** is source code.
 
 A local inventory for personal electronics, based on [Homebox](https://github.com/sysadminsmedia/homebox). Browse device photos by category, see what you bought each month and how much you spent, or group equipment by how you use it. The photo library remembers separate display orders for **All devices** and for each category.
 

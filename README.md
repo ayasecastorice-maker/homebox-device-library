@@ -4,7 +4,9 @@
 
 **[下载 Windows x64 免安装版（ZIP）](https://github.com/ayasecastorice-maker/homebox-device-library/releases/download/v0.1.0-windows/Homebox-Windows-x64.zip)**
 
-Windows 10 22H2 / 11（Intel 或 AMD 64 位）：将 ZIP **全部解压**到本地可写文件夹，双击里面的 **`Homebox.exe`**。首次使用请注册；关闭窗口即停止服务。WebView2 已随包附带，不需要安装 SDK、编译器、Go 或 Node.js。上方下载的是成品，绿色 **Code → Download ZIP** 下载的是源码。私有仓库需先登录有访问权限的 GitHub 账号。
+**macOS 预发布版：** [Apple 芯片（M 系列）](https://github.com/ayasecastorice-maker/homebox-device-library/releases/download/v0.1.0-macos/Homebox-macOS-arm64.zip) | [Intel](https://github.com/ayasecastorice-maker/homebox-device-library/releases/download/v0.1.0-macos/Homebox-macOS-amd64.zip)。适用于 macOS 13+，尚未在 Mac 真机验证启动，未经 Apple 公证。
+
+Windows 10 22H2 / 11（Intel 或 AMD 64 位）：将 ZIP **全部解压**到本地可写文件夹，双击里面的 **`Homebox.exe`**。首次使用请注册；关闭窗口即停止服务。WebView2 已随包附带，不需要安装 SDK、编译器、Go 或 Node.js。上方下载的是成品，绿色 **Code → Download ZIP** 下载的是源码。
 
 基于 [Homebox](https://github.com/sysadminsmedia/homebox) 的个人电子设备管理应用。设备照片库支持分类、照片、头像和手动排序；「全部」与各分类分别保存顺序。资产统计包含月度支出和购入明细，装备分组可按使用场景整理设备。
 
