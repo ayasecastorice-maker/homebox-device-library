@@ -1,0 +1,139 @@
+.device-app .device-library-toolbar {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) 132px 132px 76px 40px;
+}
+.device-app .device-library-toolbar select {
+  min-width: 0;
+  width: 100%;
+  /* Native selects already reserve space for the Windows dropdown arrow. */
+  padding-right: 12px;
+}
+.device-library-toolbar .search-input {
+  min-width: 0;
+}
+.device-app .device-card-open {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+  border-radius: inherit;
+  color: inherit;
+}
+.device-order-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.device-card > .device-order-controls {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+}
+.device-order-controls .icon-button {
+  width: 32px;
+  height: 32px;
+  min-height: 32px;
+  background: #ffffffeb;
+  border-color: #65889b40;
+}
+.device-order-grip {
+  cursor: grab !important;
+  touch-action: none;
+}
+.device-order-grip:active {
+  cursor: grabbing !important;
+}
+.device-sort-ghost {
+  opacity: 0.25 !important;
+}
+.device-sort-chosen {
+  border-color: #65889b !important;
+}
+.device-sort-fallback {
+  opacity: 0.92 !important;
+  box-shadow: 0 18px 45px #34506440 !important;
+  animation: none !important;
+}
+.is-sorting .device-card {
+  transition: none !important;
+}
+[data-order-used] > .device-card {
+  animation: none !important;
+}
+.is-sorting .device-card:hover {
+  transform: none;
+}
+.device-order-popup {
+  font-family: "Homebox WenKai", sans-serif;
+  color: #2f2d29;
+  background: linear-gradient(145deg, #ffffffeb, #ecf2f5df);
+  -webkit-backdrop-filter: blur(22px) saturate(1.12);
+  backdrop-filter: blur(22px) saturate(1.12);
+  border-color: #ffffffde;
+  border-radius: 20px;
+  min-width: 180px;
+  box-shadow:
+    inset 0 1px 1px #fff,
+    inset 0 -1px 1px #65889b30,
+    0 0 0 1px #65889b26,
+    0 16px 40px -8px #34506440;
+}
+.device-order-popup [role="menuitem"] {
+  border-radius: 12px;
+  gap: 10px;
+  padding: 10px 12px;
+}
+.device-order-popup [role="menuitem"][data-highlighted] {
+  background: #65889b19;
+}
+.order-position-dialog {
+  width: min(420px, calc(100vw - 32px));
+}
+.position-device-name {
+  margin: 0 0 18px;
+  overflow-wrap: anywhere;
+}
+.position-field {
+  display: grid;
+  gap: 8px;
+}
+@media (prefers-reduced-transparency: reduce), (forced-colors: active) {
+  .device-order-popup {
+    background: Canvas;
+    color: CanvasText;
+    border-color: CanvasText;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+}
+@media (max-width: 900px) {
+  .device-app .device-library-toolbar {
+    grid-template-columns: minmax(100px, 1fr) 132px 76px 40px;
+  }
+  .device-library-toolbar .search-input {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 480px) {
+  .device-app .device-library-toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .device-library-toolbar > .icon-button {
+    justify-self: end;
+  }
+  .device-library-toolbar .view-switch {
+    justify-self: start;
+  }
+  .device-order-controls .icon-button {
+    width: 36px;
+    height: 36px;
+  }
+  .device-card > .device-order-controls {
+    top: 6px;
+    right: 6px;
+  }
+}

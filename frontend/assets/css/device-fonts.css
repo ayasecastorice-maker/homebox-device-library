@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "Homebox WenKai";
+  src: url("/fonts/LXGWWenKai-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Homebox Fraunces";
+  src: url("/fonts/Fraunces.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Homebox Manrope";
+  src: url("/fonts/Manrope.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Homebox Sans";
+  src: url("/fonts/SourceHanSansCN-VF.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 250 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Homebox Serif";
+  src: url("/fonts/SourceHanSerifCN-VF.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 250 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Homebox Lora";
+  src: url("/fonts/Lora-VF.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}

@@ -1,0 +1,272 @@
+/* Motion only: materials, layout, and persisted device state stay unchanged. */
+.device-app {
+  --motion-settle: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-spring: cubic-bezier(0.22, 1.12, 0.36, 1);
+  --motion-exit: cubic-bezier(0.4, 0, 0.8, 0.2);
+}
+
+/* Keep the page itself free of transforms/filters so sticky glass stays sharp. */
+.device-page-enter-active {
+  transition: opacity 460ms var(--motion-settle);
+}
+.device-page-leave-active {
+  transition: opacity 150ms var(--motion-exit);
+}
+.device-page-enter-from,
+.device-page-leave-to {
+  opacity: 0;
+  transform: none;
+  filter: none;
+}
+.device-page-enter-active > .page-heading,
+.device-page-enter-active > .toolbar,
+.device-page-enter-active > .category-tabs,
+.device-page-enter-active > .settings-section,
+.device-page-enter-active > .settings-row {
+  animation: motion-page-layer 460ms var(--motion-settle) backwards;
+}
+.device-page-enter-active > .toolbar {
+  animation-delay: 35ms;
+  animation-duration: 425ms;
+}
+.device-page-enter-active > .category-tabs,
+.device-page-enter-active > .settings-row {
+  animation-delay: 65ms;
+  animation-duration: 395ms;
+}
+.device-page-leave-active > .page-heading {
+  animation: motion-heading-out 150ms var(--motion-exit) both;
+}
+@keyframes motion-page-layer {
+  from {
+    opacity: 0;
+    translate: calc(var(--page-direction, 1) * 24px) 10px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes motion-heading-out {
+  to {
+    translate: calc(var(--page-direction, 1) * -10px) -3px;
+  }
+}
+
+.device-content-enter-active {
+  transition:
+    opacity 300ms var(--motion-settle),
+    transform 400ms var(--motion-settle);
+}
+.device-content-leave-active {
+  transition:
+    opacity 100ms ease,
+    transform 120ms var(--motion-exit);
+}
+.device-content-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.device-content-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.category-tabs,
+.view-switch {
+  position: relative;
+}
+.selection-indicator {
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    transform 420ms var(--motion-spring),
+    width 360ms var(--motion-settle),
+    opacity 150ms ease;
+}
+.selection-indicator[data-ready] {
+  opacity: 1;
+}
+.category-tabs > .selection-indicator {
+  height: 2px;
+  bottom: 0;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+.category-tabs:has(> .selection-indicator[data-ready]) button.active {
+  border-bottom-color: transparent;
+}
+.view-switch > .selection-indicator {
+  top: 3px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #e7e2d9;
+  background: #fff;
+  box-shadow: 0 2px 5px #34506414;
+}
+.view-switch .icon-button {
+  position: relative;
+}
+.view-switch:has(> .selection-indicator[data-ready]) .icon-button.active {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+.device-sidebar .nav-lens {
+  transition:
+    transform 540ms var(--motion-spring),
+    opacity 180ms ease;
+}
+.device-nav svg {
+  transition: transform 320ms var(--motion-spring);
+}
+.device-nav.router-link-active svg {
+  transform: scale(1.07);
+}
+
+/* Animate individual translate, not Sortable/Vue's transform channel. */
+.device-card,
+.group-card {
+  animation: motion-tile-in 520ms var(--motion-settle) backwards;
+  animation-delay: calc(min(var(--tile-index, 0), 8) * 38ms);
+}
+@keyframes motion-tile-in {
+  from {
+    opacity: 0;
+    translate: 0 22px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.is-sorting .device-card,
+.device-card.device-sort-fallback {
+  animation: none !important;
+  translate: none;
+}
+.metric,
+.chart-columns > section {
+  animation: motion-tile-in 560ms var(--motion-settle) backwards;
+}
+.metric:nth-child(2) {
+  animation-delay: 55ms;
+}
+.metric:nth-child(3) {
+  animation-delay: 110ms;
+}
+.metric:nth-child(4) {
+  animation-delay: 165ms;
+}
+.chart-columns > section:first-child {
+  animation-delay: 100ms;
+}
+.chart-columns > section:last-child {
+  animation-delay: 170ms;
+}
+.bar-column .bar {
+  animation-duration: 760ms;
+  animation-timing-function: var(--motion-settle);
+  transition: height 520ms var(--motion-settle);
+}
+.bar-column:nth-child(3n + 1) .bar {
+  animation-delay: 120ms;
+}
+.bar-column:nth-child(3n + 2) .bar {
+  animation-delay: 160ms;
+}
+.bar-column:nth-child(3n) .bar {
+  animation-delay: 200ms;
+}
+
+.device-dialog[open]:not(.is-closing) {
+  animation: motion-dialog-in 440ms var(--motion-spring);
+}
+.device-dialog[open]:not(.is-closing) .dialog-body {
+  animation: motion-dialog-content 360ms 60ms var(--motion-settle) backwards;
+}
+.device-dialog[open].is-closing {
+  animation: none;
+}
+.device-dialog[open].is-closing::backdrop {
+  animation: device-backdrop-out 220ms ease forwards;
+}
+@keyframes motion-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.945);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes motion-dialog-content {
+  from {
+    opacity: 0;
+    translate: 0 10px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.device-app .btn,
+.device-app .icon-button {
+  transition:
+    scale 240ms var(--motion-spring),
+    transform 240ms var(--motion-settle),
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 240ms ease;
+}
+.device-app .btn:active:not(:disabled),
+.device-app .icon-button:active:not(:disabled):not(.device-order-grip) {
+  scale: 0.96;
+}
+.device-table tbody tr {
+  transition: background-color 200ms ease;
+}
+@media (hover: hover) {
+  .device-card .device-card-open:active {
+    scale: 0.995;
+  }
+  .device-card-open {
+    transition: scale 240ms var(--motion-settle);
+  }
+}
+@media (max-width: 900px) {
+  .device-sidebar {
+    transition:
+      transform 440ms var(--motion-spring),
+      visibility 440ms;
+  }
+  .device-sidebar.is-open .device-nav {
+    animation: motion-dialog-content 320ms 80ms var(--motion-settle) backwards;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .device-app *,
+  .device-app *::before,
+  .device-app *::after,
+  .device-dialog::backdrop {
+    animation: none !important;
+    transition: none !important;
+  }
+  .device-app .btn:active,
+  .device-app .icon-button:active,
+  .device-app .device-card-open:active {
+    scale: none;
+  }
+}
+@media (forced-colors: active) {
+  .category-tabs > .selection-indicator {
+    background: Highlight;
+  }
+  .view-switch > .selection-indicator {
+    border-color: Highlight;
+    background: Canvas;
+  }
+}
