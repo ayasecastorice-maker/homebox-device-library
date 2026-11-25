@@ -2,6 +2,10 @@
 
 **简体中文** | [English](README.en.md)
 
+**[下载 Windows x64 免安装版（ZIP）](https://github.com/ayasecastorice-maker/homebox-device-library/releases/download/v0.1.0-windows/Homebox-Windows-x64.zip)**
+
+Windows 10 22H2 / 11（Intel 或 AMD 64 位）：将 ZIP **全部解压**到本地可写文件夹，双击里面的 **`Homebox.exe`**。首次使用请注册；关闭窗口即停止服务。WebView2 已随包附带，不需要安装 SDK、编译器、Go 或 Node.js。上方下载的是成品，绿色 **Code → Download ZIP** 下载的是源码。私有仓库需先登录有访问权限的 GitHub 账号。
+
 基于 [Homebox](https://github.com/sysadminsmedia/homebox) 的个人电子设备管理应用。设备照片库支持分类、照片、头像和手动排序；「全部」与各分类分别保存顺序。资产统计包含月度支出和购入明细，装备分组可按使用场景整理设备。
 
 本仓库只有源码和构建所需的静态资源，不附账号、设备、数据库、密钥或可执行文件。首次运行后需要自行注册。默认仅监听本机，不提供跨电脑账号同步。
@@ -18,6 +22,9 @@ python3 launcher/macos/package.py
 ```
 
 两个 ZIP 和校验文件会写入 `dist/macos/`。当前候选包未经 Apple Developer ID 签名或公证。更多说明见 [macOS 使用说明](launcher/macos/README.md)。
+
+<details>
+<summary>开发者：从源码构建 Windows x64 版（使用成品包请跳过）</summary>
 
 ## 从源码运行（Windows x64）
 
@@ -38,6 +45,8 @@ Pop-Location
 桌面启动器使用 .NET Framework 的 x64 C# 编译器和 Microsoft Edge WebView2 Runtime。另需将 NuGet 包 `Microsoft.Web.WebView2` **1.0.4314.35** 解压到 `.runtime/webview-sdk/1.0.4314.35/`，该目录下应直接包含 `lib/` 和 `runtimes/`。可从 [NuGet 包页面](https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.4314.35) 获取。浏览器模式不需要此 SDK。
 
 完成后端构建后运行 `.\Build-Launcher.ps1`，再双击 `Start-Homebox.cmd`。关闭桌面窗口会停止由它启动的服务。图标矢量源文件在 `launcher/assets/`，另附的 `launcher/portable/PortableStart.cs` 是离线分发包装器的源码，不是启动本项目的必要步骤。
+
+</details>
 
 ## 数据与发布边界
 

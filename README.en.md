@@ -2,6 +2,10 @@
 
 [简体中文](README.md) | **English**
 
+**[Download Homebox for Windows x64 (portable ZIP)](https://github.com/ayasecastorice-maker/homebox-device-library/releases/download/v0.1.0-windows/Homebox-Windows-x64.zip)**
+
+On Windows 10 22H2 or Windows 11 (64-bit Intel/AMD), **extract the entire ZIP** to a writable local folder and double-click **`Homebox.exe`**. Register on first use. Closing the window stops the server. WebView2 is bundled; no SDK, compiler, Go, or Node.js installation is needed. Use the link above for the app; **Code → Download ZIP** is source code. Sign in with a GitHub account that has access to this private repository.
+
 A local inventory for personal electronics, based on [Homebox](https://github.com/sysadminsmedia/homebox). Browse device photos by category, see what you bought each month and how much you spent, or group equipment by how you use it. The photo library remembers separate display orders for **All devices** and for each category.
 
 This is a community fork with a Chinese-language device interface. The repository contains source code and build assets, not executables, accounts, device records, or keys. Register a new account the first time you run it. The service listens on your own computer by default; signing in on another computer does not sync your inventory.
@@ -18,6 +22,9 @@ python3 launcher/macos/package.py
 ```
 
 Both runtime ZIPs and their checksums are written to `dist/macos/`. The current candidate packages are not signed with an Apple Developer ID or notarized. See the [additional macOS notes (Chinese)](launcher/macos/README.md).
+
+<details>
+<summary>Developers: Build for Windows x64 (skip this if you downloaded the portable ZIP)</summary>
 
 ## Windows x64: Run From Source
 
@@ -38,6 +45,8 @@ Open <http://127.0.0.1:7745> and register. To stop the background service, run `
 The desktop launcher needs the x64 .NET Framework C# compiler and Microsoft Edge WebView2 Runtime. Extract the [Microsoft.Web.WebView2 1.0.4314.35 NuGet package](https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.4314.35) into `.runtime/webview-sdk/1.0.4314.35/` so it contains `lib/` and `runtimes/` directly. The SDK is not required for browser mode.
 
 After building the backend, run `.\Build-Launcher.ps1` and double-click `Start-Homebox.cmd`. Closing the desktop window stops the server it started. The launcher icon sources are in `launcher/assets/`; `launcher/portable/PortableStart.cs` is only needed for the offline distribution wrapper.
+
+</details>
 
 ## Data and Backups
 
